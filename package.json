@@ -2,11 +2,12 @@
   "name": "real-world-express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "start:dev": "nodemon dist/index.js",
     "build:dev": "tsc --watch --preserveWatchOutput",
-    "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\""
+    "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\"",
+    "lint": "eslint . --ext .ts"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,16 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
     "concurrently": "^5.0.0",
-    "nodemon": "^1.19.4"
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.0",
+    "nodemon": "^1.19.4",
+    "prettier": "^2.2.1"
   }
 }
