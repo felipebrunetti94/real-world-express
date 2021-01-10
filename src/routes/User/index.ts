@@ -3,17 +3,13 @@ import loginUser from '../../app/loginUser'
 import registerUser from '../../app/registerUser'
 
 export const userRouter = express.Router({
-    strict: true
+  strict: true,
 })
 
-userRouter.post('/', (req: Request, res: Response) => {
-    console.log(req)
-    registerUser()
-    res.end("Parece que vc deu um POST")
-})
+userRouter.post('/', registerUser)
 
 userRouter.post('/login', (req: Request, res: Response) => {
-    console.log(req)
-    loginUser()
-    res.end("Parece que vc deu um POST")
+  console.log(req)
+  loginUser()
+  res.end('Parece que vc deu um POST')
 })
