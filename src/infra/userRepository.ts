@@ -1,7 +1,8 @@
-import * as db from './db'
+import db from './db'
 import { IUser } from '../domain/user'
+import UserMapper from './userMapper'
 
 export const register = (user: IUser): void => {
-  const stringUser = JSON.stringify(user)
-  db.insert(stringUser)
+  const userDatabase = UserMapper.toDataBase(user)
+  db.insert(userDatabase)
 }
