@@ -8,12 +8,12 @@ export interface IUser {
   username: string
   bio: string
   image: null | string
+  password: string
 }
 
 export interface IUserAuth extends IUser {
   token: string
   email: string
-  password: string
 }
 
 export const validate = (): null => null
