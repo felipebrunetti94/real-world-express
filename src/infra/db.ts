@@ -8,8 +8,10 @@ export interface IDataDatabase {
 }
 
 const db = {
-  insert({ data }: IDataDatabase): void {
+  insert({ data }: IDataDatabase): string {
     fs.appendFile(dbPath, data)
+    const id = new Date().toISOString()
+    return id
   },
 }
 
