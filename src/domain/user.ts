@@ -1,23 +1,21 @@
-export interface IUserRequestData {
-  username: string
-  email: string
-  password: string
-}
-
 export interface IUser {
   username: string
-  bio: string
-  image: null | string
-  password: string
   email: string
+  bio: string
+  image: string | null
+}
+
+export interface IUserRequestData extends IUser {
+  password: string
 }
 
 export interface IUserAuth extends IUser {
   token: string
-  email: string
-  username: string
-  bio: string
-  image: string | null
+}
+
+export interface IUserDB extends IUser {
+  password: string
+  id: string
 }
 
 interface IErrorMessage {
@@ -40,22 +38,26 @@ class RequiredFieldException extends Error {
   }
 }
 
-export const validate = (userRequest: IUserRequestData): void => {
+export const validateRegister = (userRequest: IUserRequestData): void => {
   if (!userRequest.username || !userRequest.email || !userRequest.password) {
     throw new RequiredFieldException('User')
   }
 }
 
-export const create = (userData: IUserRequestData): IUserAuth => {
+export const create = (
+  userData: IUserRequestData,
+  token: string,
+): IUserAuth => {
   return {
     username: userData.username,
     email: userData.email,
-    token: '',
-    bio: '',
-    image: null,
-    password: userData.password,
+    bio: userData.bio || '',
+    image: userData.image || null,
+    token,
   }
 }
 
-export const isAuthValid = (userAuth: IUserAuth): boolean =>
-  userAuth.email !== '' && userAuth.password !== ''
+export default {
+  create,
+  validateRegister,
+}
