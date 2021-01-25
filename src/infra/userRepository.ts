@@ -9,3 +9,7 @@ export const register = async (user: IUser): Promise<string> => {
   const userID = db.insert(userDatabase)
   return userID
 }
+
+export default {
+  register,
+}
