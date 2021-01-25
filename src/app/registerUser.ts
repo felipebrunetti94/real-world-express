@@ -11,7 +11,7 @@ export default async (req: Request, res: Response): Promise<void> => {
     const token = Auth.getToken(userID)
     const user = User.create(userData, token)
     res.setHeader('content-type', 'application/json; charset=utf-8')
-    res.end(JSON.stringify(user))
+    res.status(201).end(JSON.stringify(user))
   } catch (error) {
     res.end('There is been a problem with yout request')
   }
