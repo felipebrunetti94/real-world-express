@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { HASH_ROUNDS, SECRET, JWT_TIMER } from '../config/constants'
+import { HASH_ROUNDS, SECRET, JWT_TIMER } from '../../config/constants'
 
 const Auth = {
   hashPassword: async (password: string): Promise<string> => {
